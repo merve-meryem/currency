@@ -1,0 +1,10 @@
+body {
+    margin:0;
+    padding:0;
+    height:100vh;
+    background-image: url(assets/monopoly-money-background-free-vector.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
