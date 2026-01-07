@@ -12,17 +12,17 @@ function Currency() {
   const [toCurrency, setToCurrency] = useState("TRY");
   const [result, setResult] = useState(0);
 
-  const exchange = async ()  => {
+  const exchange = async () => {
     const response = await axios.get(
       `${BASE_URL}?apikey=${API_KEY}&base_currency=${fromCurrency}`
     );
-     const res = ((response.data.data[toCurrency]) * amount).toFixed(2);
-     setResult(res);
+    const res = (response.data.data[toCurrency] * amount).toFixed(2);
+    setResult(res);
   };
 
   return (
     <div className="currency-div">
-      <div >
+      <div>
         <h3>DÖVİZ KURU UYGULAMASI</h3>
       </div>
       <div>
@@ -41,7 +41,11 @@ function Currency() {
           <option>TRY</option>
         </select>
         <BsArrowRightCircleFill
-          style={{ fontSize: "35px", marginRight: "10px", color:"yellowgreen"}}
+          style={{
+            fontSize: "35px",
+            marginRight: "10px",
+            color: "yellowgreen",
+          }}
         />
         <select
           onChange={(e) => setToCurrency(e.target.value)}
@@ -58,9 +62,18 @@ function Currency() {
           className="result"
         ></input>
       </div>
-      <div>
+      <div className="buttons">
         <button onClick={exchange} className="exchange-button">
           Çevir
+        </button>
+        <button
+          className="reset-button"
+          onClick={() => {
+            setAmount(0);
+            setResult(0);
+          }}
+        >
+          Sıfırla
         </button>
       </div>
     </div>
